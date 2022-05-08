@@ -12,10 +12,6 @@ public class RoleServiceImpl implements RoleService {
     @Autowired
     private RoleRepository roleRepository;
 
-    @Override
-    public Role saveNewRole(Role role) {
-        return roleRepository.save(role);
-    }
 
     @Override
     public Role getRoleByName(String name) {

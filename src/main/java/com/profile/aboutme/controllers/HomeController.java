@@ -10,9 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/")
-public class HomController {
+public class HomeController {
 
     @Autowired
     private ProfileImageServiceImpl profileImageService;
@@ -20,15 +21,6 @@ public class HomController {
     @Autowired
     private UserServiceImpl userService;
 
-    @GetMapping("")
-    public String homePage(){
-        return "Hello, welcome to Sydiary";
-    }
-
-    @PostMapping("uploadImage")
-    public ResponseEntity<ResponseObject> uploadImage(@RequestParam("image") MultipartFile file){
-        return profileImageService.storeFile(file);
-    }
 
     @GetMapping("images/{fileName:.+}")
     public ResponseEntity<byte[]> readFile (@PathVariable String fileName){

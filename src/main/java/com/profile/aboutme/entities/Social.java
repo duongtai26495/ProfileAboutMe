@@ -1,7 +1,10 @@
 package com.profile.aboutme.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,14 +16,21 @@ public class Social {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long social_id;
 
+    @Column(length = 1000)
     private String url;
 
     private String display_name;
 
     private int is_show;
 
-    @ManyToMany(mappedBy = "socials")
-    private List<User> users;
+    @ManyToOne()
+    @JoinColumn(name = "social_type", referencedColumnName = "id")
+    private SocialType social_type;
+
+    @ManyToOne()
+    @JoinColumn(name = "user", referencedColumnName = "user_id")
+    @JsonIgnore
+    private User user;
 
     public Social() {
     }
@@ -57,11 +67,19 @@ public class Social {
         this.is_show = is_show;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public SocialType getSocial_type() {
+        return social_type;
+    }
+
+    public void setSocial_type(SocialType social_type) {
+        this.social_type = social_type;
     }
 }

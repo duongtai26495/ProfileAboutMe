@@ -15,7 +15,7 @@ public class ProfileImage {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "product_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;
 
     public ProfileImage() {

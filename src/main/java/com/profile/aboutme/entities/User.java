@@ -1,6 +1,7 @@
 package com.profile.aboutme.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,18 +13,19 @@ public class User {
     @Column(name = "user_id")
     private Long user_id;
 
-    @Column(name = "full_name")
+    @Column(name = "full_name", nullable = false)
     private String full_name;
 
-    @Column(name = "email",unique = true)
+    @Column(name = "email",unique = true, nullable = false)
     private String email;
 
-    @Column(name = "username", unique = true)
+    @Column(name = "username", unique = true, nullable = false)
     private String username;
 
+    @Column(nullable = false)
     private String password;
 
-    @Column(name = "joined_at",updatable = false)
+    @Column(name = "joined_at",updatable = false, nullable = false)
     private String joined_at;
 
     private String last_edited;
@@ -32,18 +34,17 @@ public class User {
 
     private int gender;
 
+    @Column(length = 1000, nullable = true)
     private String profile_image;
 
+    @Column(length = 1000, nullable = true)
     private String qrcode_url;
 
+    @Column(length = 1000, nullable = true)
     private String user_description;
 
 
-    @ManyToMany
-    @JoinTable(name = "social_user",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "social_id")
-    )
+    @OneToMany(targetEntity = Social.class, mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Social> socials;
 
     @ManyToOne()
