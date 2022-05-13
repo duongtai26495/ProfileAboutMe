@@ -41,8 +41,8 @@ public class UserController {
         return profileImageService.storeFile(file);
     }
 
-    @PostMapping("edit/social")
-    public Social editSocial(@RequestBody Social social){
+    @PostMapping("add/social")
+    public Social addSocial(@RequestBody Social social){
         return socialService.saveNewSocial(social);
     }
 }
