@@ -24,7 +24,7 @@ public class Social {
     private int is_show;
 
     @ManyToOne()
-    @JoinColumn(name = "social_type", referencedColumnName = "id")
+    @JoinColumn(name = "social_type", referencedColumnName = "social_code")
     private SocialType social_type;
 
     @ManyToOne()

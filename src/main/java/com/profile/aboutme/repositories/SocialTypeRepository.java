@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SocialTypeRepository extends JpaRepository<SocialType, Long> {
+public interface SocialTypeRepository extends JpaRepository<SocialType, String> {
 }

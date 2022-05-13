@@ -32,11 +32,6 @@ public class HomeController {
         return "Success";
     }
 
-    @GetMapping("profile/{username}")
-    public UserDTO getUserByUsername(@PathVariable String username){
-        return userService.getUserByUsername(username);
-    }
-
     @PostMapping("register")
     public ResponseEntity<ResponseObject> createUser (@RequestBody User user){
         return userService.saveUser(user);
