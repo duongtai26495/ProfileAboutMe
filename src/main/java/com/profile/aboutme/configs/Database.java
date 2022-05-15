@@ -15,7 +15,7 @@ import java.util.List;
 @Configuration
 public class Database {
     @Bean
-    CommandLineRunner initDatabase(RoleRepository roleRepository, SocialTypeRepository socialTypeRepository){
+    CommandLineRunner initDatabase(RoleRepository roleRepository, RoleServiceImpl roleService, SocialTypeRepository socialTypeRepository){
         return new CommandLineRunner() {
             @Override
             public void run(String... args) throws Exception {
@@ -37,7 +37,11 @@ public class Database {
                 }
 
                 for(Role role : roles){
-                    roleRepository.save(role);
+                    if(!roleService.isExistByName(role.getName())){
+                        roleRepository.save(role);
+                    }else{
+                        System.out.println("Role: "+role.getName()+" is already exist");
+                    }
                 }
             }
         };

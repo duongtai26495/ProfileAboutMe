@@ -16,6 +16,8 @@ public class UserDTO {
 
     private String last_edited;
 
+    private String phone;
+
     private int active;
 
     private int gender;
@@ -55,6 +57,14 @@ public class UserDTO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getFull_name() {

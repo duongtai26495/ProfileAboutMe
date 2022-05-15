@@ -4,4 +4,6 @@ import com.profile.aboutme.entities.Role;
 
 public interface RoleService {
     Role getRoleByName(String name);
+
+    boolean isExistByName(String name);
 }

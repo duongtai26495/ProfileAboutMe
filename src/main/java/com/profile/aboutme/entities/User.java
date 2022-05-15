@@ -28,6 +28,8 @@ public class User {
     @Column(name = "joined_at",updatable = false, nullable = false)
     private String joined_at;
 
+    private String phone;
+
     private String last_edited;
 
     private int active;
@@ -35,13 +37,13 @@ public class User {
     private int gender;
 
     @Column(length = 1000, nullable = true)
-    private String profile_image;
+    private String profile_image = "";
 
     @Column(length = 1000, nullable = true)
-    private String qrcode_url;
+    private String qrcode_url = "";
 
     @Column(length = 1000, nullable = true)
-    private String user_description;
+    private String user_description = "";
 
 
     @OneToMany(targetEntity = Social.class, mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
@@ -52,6 +54,14 @@ public class User {
     private Role role;
 
     public User() {
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public Long getUser_id() {

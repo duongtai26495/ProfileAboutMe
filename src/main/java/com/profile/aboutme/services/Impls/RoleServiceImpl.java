@@ -6,6 +6,8 @@ import com.profile.aboutme.services.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RoleServiceImpl implements RoleService {
 
@@ -16,5 +18,16 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public Role getRoleByName(String name) {
         return roleRepository.getRoleByName(name);
+    }
+
+    @Override
+    public boolean isExistByName(String name) {
+        List<Role> roleList = roleRepository.findAll();
+        for(Role role : roleList){
+            if (role.getName().equals(name)){
+                return true;
+            }
+        }
+        return false;
     }
 }

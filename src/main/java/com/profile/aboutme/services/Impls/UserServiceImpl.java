@@ -68,12 +68,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public ResponseEntity<ResponseObject> saveUser(User user) {
         if (findByEmail(user.getEmail()) != null){
-            return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(
+            return ResponseEntity.status(HttpStatus.OK).body(
                     new ResponseObject("FAILED","This email already taken!",null)
             );
         }
         if (findByUsername(user.getUsername()) != null){
-            return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(
+            return ResponseEntity.status(HttpStatus.OK).body(
                     new ResponseObject("FAILED","This username already taken!",null)
             );
         }

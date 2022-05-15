@@ -16,6 +16,7 @@ public class ConvertEntity {
         userDTO.setSocials(user.getSocials());
         userDTO.setUser_description(user.getUser_description());
         userDTO.setQrcode_url(user.getQrcode_url());
+        userDTO.setPhone(user.getPhone());
         return userDTO;
     }
 }
